@@ -1,3 +1,8 @@
+// 연산 기능이 있는 추상화 프로토콜
+protocol AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int
+}
+
 class Calculator {
     
     // 연산 인스턴스 생성

@@ -55,6 +55,8 @@ class MultiplyOperation: AbstractOperation {
 // 나누기 연산 기능을 제공하는 클래스
 class DivideOperation: AbstractOperation {
     func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+        
+        // 매개변수가 0일 경우 예외 처리
         if firstNumber == 0 || secondNumber == 0 {
             return -1
         } else {

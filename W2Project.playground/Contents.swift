@@ -25,7 +25,7 @@ class Calculator {
         case "%":
             return remainderOperation.operation(firstNumber, secondNumber)
         default:
-            return 0
+            return -1
         }
 
     }
@@ -55,7 +55,11 @@ class MultiplyOperation: AbstractOperation {
 // 나누기 연산 기능을 제공하는 클래스
 class DivideOperation: AbstractOperation {
     func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return firstNumber / secondNumber
+        if firstNumber == 0 || secondNumber == 0 {
+            return -1
+        } else {
+            return firstNumber / secondNumber
+        }
     }
 }
 

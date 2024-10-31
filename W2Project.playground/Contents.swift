@@ -15,15 +15,15 @@ class Calculator {
     func calculate(operatorText: String, firstNumber: Int, secondNumber: Int) -> Int {
         switch operatorText {
         case "+":
-            return addOperation.add(firstNumber, secondNumber)
+            return addOperation.operation(firstNumber, secondNumber)
         case "-":
-            return subtractOperation.subtract(firstNumber, secondNumber)
+            return subtractOperation.operation(firstNumber, secondNumber)
         case "*":
-            return multiplyOperation.multiply(firstNumber, secondNumber)
+            return multiplyOperation.operation(firstNumber, secondNumber)
         case "/":
-            return divideOperation.divide(firstNumber, secondNumber)
+            return divideOperation.operation(firstNumber, secondNumber)
         case "%":
-            return remainderOperation.remainder(firstNumber, secondNumber)
+            return remainderOperation.operation(firstNumber, secondNumber)
         default:
             return 0
         }
@@ -32,36 +32,36 @@ class Calculator {
 }
 
 // 더하기 연산 기능을 제공하는 클래스
-class AddOperation {
-    func add(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+class AddOperation: AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber + secondNumber
     }
 }
 
 // 빼기 연산 기능을 제공하는 클래스
-class SubtractOperation {
-    func subtract(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+class SubtractOperation: AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber - secondNumber
     }
 }
 
 // 곱하기 연산 기능을 제공하는 클래스
-class MultiplyOperation {
-    func multiply(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+class MultiplyOperation: AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber * secondNumber
     }
 }
 
 // 나누기 연산 기능을 제공하는 클래스
-class DivideOperation {
-    func divide(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+class DivideOperation: AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber / secondNumber
     }
 }
 
 // 나머지 연산 기능을 제공하는 클래스
-class RemainderOperation {
-    func remainder(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+class RemainderOperation: AbstractOperation {
+    func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber % secondNumber
     }
 }

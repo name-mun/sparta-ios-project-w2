@@ -6,27 +6,10 @@ protocol AbstractOperation {
 class Calculator {
     
     // 연산 인스턴스 생성
-    let addOperation = AddOperation()
-    let subtractOperation = SubtractOperation()
-    let multiplyOperation = MultiplyOperation()
-    let divideOperation = DivideOperation()
-    let remainderOperation = RemainderOperation()
+    var operation: AbstractOperation?
     
-    func calculate(operatorText: String, firstNumber: Int, secondNumber: Int) -> Int {
-        switch operatorText {
-        case "+":
-            return addOperation.operation(firstNumber, secondNumber)
-        case "-":
-            return subtractOperation.operation(firstNumber, secondNumber)
-        case "*":
-            return multiplyOperation.operation(firstNumber, secondNumber)
-        case "/":
-            return divideOperation.operation(firstNumber, secondNumber)
-        case "%":
-            return remainderOperation.operation(firstNumber, secondNumber)
-        default:
-            return -1
-        }
+    func calculate(firstNumber: Int, secondNumber: Int) -> Int {
+        (operation?.operation(firstNumber, secondNumber))!
 
     }
 }
@@ -39,6 +22,11 @@ class AddOperation: AbstractOperation {
 }
 
 // 빼기 연산 기능을 제공하는 클래스
+/**
+ - parameters:
+ - firstNumber:뺴기 연산자의 왼쪽에 오는 수
+ - secondNumber: 뺴기 연산자의 오른쪽에 오는 수
+ */
 class SubtractOperation: AbstractOperation {
     func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber - secondNumber
@@ -69,7 +57,7 @@ class DivideOperation: AbstractOperation {
 class RemainderOperation: AbstractOperation {
     func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         
-        // 두번째 매개변수가 0일 경우 예외 처리
+        // 두번째 매개변수가 0일 경우 예외 처리 -> guard로 바꾸기
         if secondNumber == 0 {
             return -1
         } else {
@@ -79,5 +67,7 @@ class RemainderOperation: AbstractOperation {
 }
 
 let calculator = Calculator()
-let addResult = calculator.calculate(operatorText: "+", firstNumber: 10, secondNumber: 20)
-
+let addCalculator = AddOperation()
+calculator.operation = addCalculator
+let addResult = calculator.calculate(firstNumber: 1, secondNumber: 2)
+print(addResult)

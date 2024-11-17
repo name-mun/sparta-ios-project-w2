@@ -46,8 +46,8 @@ public class DivideOperation: AbstractOperation {
     
     public func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         
-        // 매개변수가 0일 경우 예외 처리
-        if firstNumber == 0 || secondNumber == 0 {
+        // 두번째 매개변수가 0일 경우 예외 처리
+        if secondNumber == 0 {
             return -1
         } else {
             return firstNumber / secondNumber
@@ -61,7 +61,7 @@ public class RemainderOperation: AbstractOperation {
     
     public func operation(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         
-        // 두번째 매개변수가 0일 경우 예외 처리 -> guard로 바꾸기
+        // 두번째 매개변수가 0일 경우 예외 처리
         if secondNumber == 0 {
             return -1
         } else {
